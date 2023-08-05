@@ -9,6 +9,7 @@ public class Program {
 	static Scanner sc = new Scanner(System.in).useLocale(Locale.US);
 
 	public static void main(String[] args) {
+		Client client;
 				
 		designLine();
 		System.out.print("Enter account number: ");
@@ -19,7 +20,12 @@ public class Program {
 		
 		double funds = initialDeposit();
 		
-		Client client = new Client(name, account, funds);
+		if (funds == 0.00) {
+			client = new Client(name, account);
+		}
+		else {
+			client = new Client(name, account, funds);
+		}
 		
 		designLine();
 		System.out.println("Account data:");
@@ -62,5 +68,4 @@ public class Program {
 		}
 		return deposit;
 	}
-
 }
