@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Locale;
+
 public class Client {
 	
 	private String name;
@@ -32,10 +34,14 @@ public class Client {
 	}
 	
 	public void addFunds(double amount) {
+		Locale.setDefault(Locale.US);
+
 		this.funds += amount;
 	}
 	
 	public void removeFunds(double withdraw) {
+		Locale.setDefault(Locale.US);
+
 		this.funds -= (withdraw + 5.00);
 	}
 	@Override
@@ -48,6 +54,4 @@ public class Client {
 				+ String.format("%.2f", funds);
 	}
 	
-	
-
 }
