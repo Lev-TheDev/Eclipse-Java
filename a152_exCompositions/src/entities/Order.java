@@ -17,7 +17,7 @@ public class Order {
 	private OrderStatus status;
 	
 	private Client client;
-	List<OrderItem> items = new ArrayList<>();
+	private List<OrderItem> items = new ArrayList<>();
 	
 	public Order() {
 	}
@@ -39,12 +39,6 @@ public class Order {
 	}
 	public void setStatus(OrderStatus status) {
 		this.status = status;
-	}
-	public List<OrderItem> getItems() {
-		return items;
-	}
-	public void setItems(List<OrderItem> items) {
-		this.items = items;
 	}
 	public Client getClient() {
 		return client;
@@ -83,7 +77,4 @@ public class Order {
 		sb.append("Total price: $" + fmt3.format(total()));
 		return sb.toString();
 	}
-	
-	
-
 }

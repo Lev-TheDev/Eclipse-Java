@@ -33,6 +33,7 @@ public class Program {
 		System.out.print("Status: ");
 		sc.nextLine();
 		String status = sc.nextLine();
+		// OrderStatus status = OrderStatus.valueOf(sc.next());
 		System.out.print("How many items to this order? ");
 		int n = sc.nextInt();
 		sc.nextLine();
@@ -40,6 +41,7 @@ public class Program {
 		LocalDateTime moment = LocalDateTime.now();
 		
 		Order order = new Order(moment, OrderStatus.valueOf(status), new Client(name, email, birthDate));
+		// passar só status, assim como só cliente caso eu instancie client antes
 		
 		for (int i = 1; i <= n; i++) {
 			System.out.println("Enter #" + i + " item data:");
@@ -62,5 +64,4 @@ public class Program {
 		
 		sc.close();
 	}
-
 }
