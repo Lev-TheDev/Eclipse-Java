@@ -22,39 +22,36 @@ public class Exercise {
 		System.out.println("What's the file path?");
 		String stPath = sc.nextLine();
 		// "/home/rogerlevino/Documentos/a220_ex/arquivo.csv"
-		File stPathO = new File(stPath);
-		String parentPath = stPathO.getParent();
+		File filePath = new File(stPath);
+		String parentStPath = filePath.getParent();
 		
 		List<Product> list = new ArrayList<>();
+		
+		boolean dir = new File(parentStPath + File.separator + "out").mkdir();
+		File outFile = new File(parentStPath + File.separator + "out" + File.separator + "summary.csv");
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(stPath))) {
 			String line = br.readLine();
 			while (line != null) {
-				String[] products = new String[3];
-				products = line.split(",");
+				String[] products = line.split(",");
 				String name = products[0];
 				double price = Double.parseDouble(products[1]);
 				int quantity = Integer.parseInt(products[2]);
-				Product product = new Product(name, price, quantity);
-				list.add(product);
+				list.add(new Product(name, price, quantity));
 				line = br.readLine();
 			}
-		}
-		catch (IOException e) {
-			System.out.println("Error: " + e.getMessage());
-		}
-		
-		boolean dir = new File(parentPath + File.separator + "out").mkdir();
-		File file = new File(parentPath + File.separator + "out" + File.separator + "summary.csv");
-		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
-			for (Product product : list) {
-				bw.write(product.toString());
-				bw.newLine();
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(outFile, true))) {
+				for (Product product : list) {
+					bw.write(product.toString());
+					bw.newLine();
+				}
+			}
+			catch (IOException e) {
+				System.out.println("Error writing file: " + e.getMessage());
 			}
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Error reading file: " + e.getMessage());
 		}
 
 		sc.close();
