@@ -1,46 +1,25 @@
 package model.services;
 
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-
 import model.entities.Contract;
 import model.entities.Installments;
 
 public class ContractService {
 	
-	private Integer months;
-	
 	private PaymentServices paymentService;
 	
-	public ContractService(Integer months, PaymentServices paymentService) {
-		this.months = months;
+	public ContractService(PaymentServices paymentService) {
 		this.paymentService = paymentService;
 	}
 	
-	public Integer getMonths() {
-		return months;
-	}
-
-	public void setMonths(Integer months) {
-		this.months = months;
-	}
-
 	public void processContract(Contract contract, Integer installmentsN) {
-		List<Installments> list = new ArrayList<>();
-		DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		double amount = contract.getPrice() / installmentsN;
 		
 		for (int i = 1; i <= installmentsN; i++) {
-			double amount = contract.getPrice() / installmentsN;
-			double interest = paymentService.interest(amount, i);
-			double iPlusFee = paymentService.totalFee(interest);
+			double interestPlusAmount = paymentService.interest(amount, i);
+			double interestPlusFee = paymentService.totalFee(interestPlusAmount);
 
-			Installments inst = new Installments(contract.getDate().plusMonths(i), iPlusFee);
-			list.add(inst);
-		}
-		
-		for (Installments i : list) {
-			System.out.println(i.getiDate().format(fmt2) + " - " + String.format("%.2f", i.getiPrice()));
+			Installments inst = new Installments(contract.getDate().plusMonths(i), interestPlusFee);
+			contract.getInstList().add(inst);
 		}
 	}
 }
