@@ -1,11 +1,23 @@
 package devices;
 
-public class ComboDevice extends Scanner extends Printer {
+public class ComboDevice extends Device implements IScanner, IPrinter {
 	
 	public ComboDevice(String serialNumber) {
 		super(serialNumber);
 	}
-	
-	// não se pode extender de duas classes, mas interfaces sim
 
+	@Override
+	public void processDoc(String doc) {
+		System.out.println("Combo processing: " + doc);
+	}
+	
+	@Override
+	public void print(String doc) {
+		System.out.println("Combo printing: " + doc);
+	}
+	
+	@Override
+	public String scan() {
+		return "Combo scan result!";
+	}
 }
