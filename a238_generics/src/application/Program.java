@@ -2,7 +2,7 @@ package application;
 
 import java.util.Scanner;
 
-import services.PrintServiceString;
+import services.PrintService;
 
 public class Program {
 	
@@ -10,18 +10,22 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		PrintServiceString ps = new PrintServiceString();
+		PrintService ps = new PrintService();
 		
-		System.out.print("How many values?");
+		System.out.print("How many values? ");
 		int n = sc.nextInt();
 		
+		ps.addValue("Maria");
+		// Object aceita String, Integer, Double... dá problema de segurança de tipos
+		
 		for (int i = 0; i < n; i++) {
-			String value = sc.next();
+			Integer value = sc.nextInt();
 			ps.addValue(value);
 		}
 		
 		ps.print();
-		System.out.println("First: " + ps.first());
+		Integer x = (Integer) ps.first();
+		System.out.println("First: " + x);
 		
 		sc.close();
 	}
