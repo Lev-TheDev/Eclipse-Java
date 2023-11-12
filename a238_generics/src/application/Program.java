@@ -10,21 +10,20 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		PrintService ps = new PrintService();
+		PrintService<String> ps = new PrintService<>();
+		// ou PrintService<Integer> ps = new PrintService<Integer>(); é opcional
 		
 		System.out.print("How many values? ");
 		int n = sc.nextInt();
 		
-		ps.addValue("Maria");
-		// Object aceita String, Integer, Double... dá problema de segurança de tipos
-		
 		for (int i = 0; i < n; i++) {
-			Integer value = sc.nextInt();
+			String value = sc.next();
 			ps.addValue(value);
 		}
 		
 		ps.print();
-		Integer x = (Integer) ps.first();
+		String x = ps.first();
+		// com type safety e sem necessidade de casting
 		System.out.println("First: " + x);
 		
 		sc.close();
