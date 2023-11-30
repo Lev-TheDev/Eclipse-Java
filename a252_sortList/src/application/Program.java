@@ -24,11 +24,15 @@ public class Program {
 		};
 		*/
 		
-		// trocar essa expressão verbosa por uma expressão lambda, uma função anônima [parâmetros
-		// entre parênteses, seta, chaves e a função "arrow-function"
+		/* trocar essa expressão verbosa por uma expressão lambda, uma função anônima [parâmetros
+		   entre parênteses, seta, chaves e a função "arrow-function"
 		Comparator<Product> comp = (p1, p2) -> {
 			return p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
 		};
+		*/
+		// versão reduzida da expressão lambda
+		// comp recebe função de dois argumentos do tipo Product que retorna p1.getName()...
+		Comparator<Product> comp = (p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
 		
 		list.sort(comp);
 		
