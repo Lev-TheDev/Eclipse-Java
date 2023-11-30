@@ -32,9 +32,9 @@ public class Program {
 		*/
 		// versão reduzida da expressão lambda
 		// comp recebe função de dois argumentos do tipo Product que retorna p1.getName()...
-		Comparator<Product> comp = (p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
+		// Comparator<Product> comp = (p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
 		
-		list.sort(comp);
+		list.sort((p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase()));
 		
 		for (Product p : list) {
 			System.out.println(p);
