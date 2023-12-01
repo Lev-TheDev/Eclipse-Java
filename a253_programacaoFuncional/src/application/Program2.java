@@ -24,7 +24,8 @@ public class Program2 {
 		list.sort(Program2::compareProducts);
 		
 		list.forEach(System.out::println);
-
+		
+		// expressão lambda = função anônima de primeira classe
 	}
 
 }
