@@ -2,7 +2,6 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 import entities.Product;
 
@@ -33,13 +32,16 @@ public class Program {
 		
 		// alternativa3:
 		// expressão lambda declarada
-		Predicate<Product> pred = p -> p.getPrice() >= 100.00;
-		list.removeIf(pred);
+		// Predicate<Product> pred = p -> p.getPrice() >= 100.00;
+		// list.removeIf(pred);
 		// ou posso usar variável antes
 		// double min = 100.00;
 		// Predicate<Product> pred = p -> p.getPrice() >= min;
 		// ou variável digitada pelo usuário.
 		
+		// alternativa4:
+		// expressão lambda inline
+		list.removeIf(p -> p.getPrice() >= 100.00);
 				
 		
 		
