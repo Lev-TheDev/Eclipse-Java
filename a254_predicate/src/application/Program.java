@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import entities.Product;
 
@@ -24,7 +25,23 @@ public class Program {
 
 		// alternativa2:
 		// reference method com método estático		
-		list.removeIf(Product::staticProductPredicate);
+		// list.removeIf(Product::staticProductPredicate);
+		
+		// alternativa2:
+		// reference method com método não-estático		
+		// list.removeIf(Product::nonStaticProductPredicate);
+		
+		// alternativa3:
+		// expressão lambda declarada
+		Predicate<Product> pred = p -> p.getPrice() >= 100.00;
+		list.removeIf(pred);
+		// ou posso usar variável antes
+		// double min = 100.00;
+		// Predicate<Product> pred = p -> p.getPrice() >= min;
+		// ou variável digitada pelo usuário.
+		
+				
+		
 		
 		for (Product p : list) {
 			System.out.println(p);
