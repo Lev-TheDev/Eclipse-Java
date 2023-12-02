@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.Product;
-import util.ProductPredicate;
 
 public class Program {
 
@@ -18,10 +17,14 @@ public class Program {
 		
 		// list.removeIf(p -> p.getPrice() >= 100.00);
 		// remover todo produto p tal que o preço seja maior ou igual a 100.
-		// alternativa:
+
+		// alternativa1:
 		// implementar manualmente classe para explicar
-		
-		list.removeIf(new ProductPredicate());
+		// list.removeIf(new ProductPredicate());
+
+		// alternativa2:
+		// reference method com método estático		
+		list.removeIf(Product::staticProductPredicate);
 		
 		for (Product p : list) {
 			System.out.println(p);
