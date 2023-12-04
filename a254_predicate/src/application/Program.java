@@ -55,12 +55,15 @@ public class Program {
 		
 		// list.forEach(Product::nonStaticPriceUpdate);
 		
-		double factor = 1.1;
+		/*double factor = 1.1;
 		Consumer<Product> cons = p -> {
 			p.setPrice(p.getPrice() * factor);
 		};
 		// como tem só uma linha a função pode-se apagar as chaves e colocar tudo após a seta
 		list.forEach(cons);
+		*/
+		
+		list.forEach(p -> p.setPrice(p.getPrice() * 1.1));
 		
 		list.forEach(System.out::println);
 		// reference method para println
