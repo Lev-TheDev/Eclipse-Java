@@ -3,9 +3,10 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import entities.Product;
+import util.UpperCaseName;
 
 public class Program {
 
@@ -63,11 +64,15 @@ public class Program {
 		list.forEach(cons);
 		*/
 		
-		list.forEach(p -> p.setPrice(p.getPrice() * 1.1));
-		
-		list.forEach(System.out::println);
+		// list.forEach(p -> p.setPrice(p.getPrice() * 1.1));
+		// list.forEach(System.out::println);
 		// reference method para println
 		
+		// utilizar a função map para aplicar a função UpperCaseName() a todos os eementos da list
+		List<String> names = list.stream().map(new UpperCaseName()).collect(Collectors.toList());
+		// função map só funciona com stream, então converte list em stream, aplica a map, depois
+		// transforma a stream em list com o collect. Essa nova lista é atribuída a List names.
+		names.forEach(System.out::println);
 		
 		
 	}
