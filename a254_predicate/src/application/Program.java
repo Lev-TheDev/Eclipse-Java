@@ -50,7 +50,9 @@ public class Program {
 		
 		// list.forEach(new PriceUpdate());
 		
-		list.forEach(Product::staticPriceUpdate);
+		// list.forEach(Product::staticPriceUpdate);
+		
+		list.forEach(Product::nonStaticPriceUpdate);
 		
 		list.forEach(System.out::println);
 		// reference method para println
