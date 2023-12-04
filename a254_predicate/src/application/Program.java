@@ -72,7 +72,8 @@ public class Program {
 		// função map só funciona com stream, então converte list em stream, aplica a map, depois
 		// transforma a stream em list com o collect. Essa nova lista é atribuída a List names.
 		
-		List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList());
+		// List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList());
+		List<String> names = list.stream().map(Product::nonStaticUpperCaseName).collect(Collectors.toList());
 		
 		names.forEach(System.out::println);
 		
