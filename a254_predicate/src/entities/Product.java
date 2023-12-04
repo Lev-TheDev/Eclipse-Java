@@ -34,6 +34,10 @@ public class Product {
 		// trabalha com o próprio objeto e não recebe outro argumento de fora
 		return price >= 100.00;
 	}
+	
+	public static void staticPriceUpdate(Product p) {
+		p.setPrice(p.getPrice() * 1.1);
+	}
 
 	@Override
 	public String toString() {

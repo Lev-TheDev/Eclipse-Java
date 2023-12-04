@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Locale;
 
 import entities.Product;
-import util.PriceUpdate;
 
 public class Program {
 
@@ -49,7 +48,10 @@ public class Program {
 		// 	System.out.println(p);
 		// }
 		
-		list.forEach(new PriceUpdate());
+		// list.forEach(new PriceUpdate());
+		
+		list.forEach(Product::staticPriceUpdate);
+		
 		list.forEach(System.out::println);
 		// reference method para println
 		
