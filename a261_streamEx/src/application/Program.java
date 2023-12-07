@@ -41,12 +41,16 @@ public class Program {
 					//.reduce(0.0, (x,y) -> x + y) / list.size();
 			System.out.println("Average price: " + String.format("%.2f", avg));
 			
-			Comparator<String> comp = (s1, s2) -> s1.toUpperCase().compareTo(s2.toUpperCase());
+			//Comparator<String> comp = (s1, s2) -> s1.toUpperCase().compareTo(s2.toUpperCase());
 			
 			List<String> names = list.stream()
 					.filter(p -> p.getPrice() < avg)
+					//.map(p -> p.getName())
+					//.sorted(comp.reversed())
+					.sorted(Comparator.comparingDouble(Product::getPrice).reversed())
 					.map(p -> p.getName())
-					.sorted(comp.reversed())
+					// inverter a ordem, pois o map antes produzia uma Stream<String> e o sorted
+					// estava manipulando um argumento Product
 					.collect(Collectors.toList());
 			names.forEach(System.out::println);
 			
