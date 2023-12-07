@@ -33,8 +33,12 @@ public class Program {
 			}
 			
 			double avg = list.stream()
-					.map(p -> p.getPrice())
-					.reduce(0.0, (x,y) -> x + y) / list.size();
+					// uma forma de realizar o fluxo da stream com outros métodos, sem reduce.
+					.mapToDouble(p -> p.getPrice())
+					.average()
+					.getAsDouble();
+					//.map(p -> p.getPrice())
+					//.reduce(0.0, (x,y) -> x + y) / list.size();
 			System.out.println("Average price: " + String.format("%.2f", avg));
 			
 			Comparator<String> comp = (s1, s2) -> s1.toUpperCase().compareTo(s2.toUpperCase());
